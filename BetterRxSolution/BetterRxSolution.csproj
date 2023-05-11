@@ -18,9 +18,11 @@
   <ItemGroup>
     <None Remove="Services\" />
     <None Remove="Models\" />
+    <None Remove="Models\NpiResponse\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="Models\" />
+    <Folder Include="Models\NpiResponse\" />
   </ItemGroup>
 </Project>

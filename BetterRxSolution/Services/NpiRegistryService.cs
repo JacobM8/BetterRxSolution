@@ -1,5 +1,6 @@
 ﻿using System;
 using BetterRxSolution.Models;
+using BetterRxSolution.Models.NpiResponse;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace BetterRxSolution.Services
             _clientFactory = clientFactory;
         }
 
-        public async Task<IEnumerable<Provider>> GetProviders(
+        public async Task<ProviderResponse> GetProviders(
             string firstName,
             string lastName,
             string taxonomyDescription,
@@ -52,10 +53,10 @@ namespace BetterRxSolution.Services
                 {
                     var errorResponse = JsonConvert.DeserializeObject<ErrorResponse>(responseStream);
 
-                    throw new ArgumentException(errorResponse.Errors?[0].Description);
+                    throw new ArgumentException(errorResponse.Errors[0].Description);
                 }
 
-                var data = JsonConvert.DeserializeObject<IEnumerable<Provider>>(responseStream);
+                var data = JsonConvert.DeserializeObject<ProviderResponse>(responseStream);
                 return data;
             }
 

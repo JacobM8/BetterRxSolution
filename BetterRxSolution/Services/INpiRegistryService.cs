@@ -1,12 +1,12 @@
 ﻿using System;
-using BetterRxSolution.Models;
+using BetterRxSolution.Models.NpiResponse;
 
 
 namespace BetterRxSolution.Services
 {
 	public interface INpiRegistryService
 	{
-        Task<IEnumerable<Provider>> GetProviders(string firstName,
+        Task<ProviderResponse> GetProviders(string firstName,
             string lastName,
             string taxonomyDescription,
             string city,
