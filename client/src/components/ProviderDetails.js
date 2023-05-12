@@ -8,6 +8,10 @@ const ProviderDetails = () => {
     let providerDetails = location.state ? location.state.providerDetails : null;
     let navigate = useNavigate();
 
+    console.log("location: ", location);
+    console.log("provider details: ", providerDetails);
+    console.log("navigate: ", navigate);
+
     return (
         <div>
             <h1>Provider Detail Page</h1>

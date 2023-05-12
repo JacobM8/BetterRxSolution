@@ -25,7 +25,7 @@ namespace BetterRxSolution.Services
             string state,
             int zip)
         {
-            var baseUrl = "https://npiregistry.cms.hhs.gov/api/?number=&enumeration_type=&use_first_name_alias=&organization_name=&address_purpose=&country_code=&limit=50&skip=&version=2.1";
+            var baseUrl = "https://npiregistry.cms.hhs.gov/api/?version=2.1";
             var url = baseUrl;
 
             if (!string.IsNullOrEmpty(firstName))
