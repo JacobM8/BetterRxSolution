@@ -1,0 +1,27 @@
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.search-row input {
+    flex: 1;
+    margin: 0.5em;
+}
+
+.search-container {
+    text-align: center;
+    width: 66%; /* two-thirds of the screen width */
+    margin: auto; /* center the container on the page */
+}
+
+button {
+    margin-top: 20px;
+}
