@@ -38,13 +38,25 @@ const SearchPage = () => {
         axios
             .get("https://localhost:7085/NpiRegistry", { params })
             .then(res => {
-                setSearchResults(res.data.results);
+                const transformedResults = res.data.results.map(result => ({
+                    number: result.number,
+                    basic: result.basic,
+                    addresses: result.addresses,
+                    createdEpoch: result.createdEpoch,
+                    enumerationType: result.enumerationType,
+                    lastUpdatedEpoch: result.lastUpdatedEpoch,
+                    practiceLocations: result.practiceLocations
+                }));
+
+                setSearchResults(transformedResults);
                 setSearchClicked(true);
             })
             .catch(err => {
+                console.log("error: ", err);
                 console.error(err);
                 setSearchClicked(true);
             });
+
     };
 
     console.log("searchResults: ", searchResults);
@@ -53,6 +65,19 @@ const SearchPage = () => {
     } else {
         console.log("searchResults is null");
     }
+
+    const searchResultsList = searchResults.map(result => (
+        <div key={result.number}>
+            <Link to={{
+                pathname: `/provider/${result.number}`,
+                state: { providerDetails: result }
+            }}>
+                {result.basic.firstName} {result.basic.lastName}
+            </Link>
+        </div>
+    ));
+
+    console.log("searchResultList: ", searchResultsList);
 
     return (
         <div className="search-container">

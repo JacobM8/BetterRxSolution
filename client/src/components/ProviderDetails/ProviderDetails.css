@@ -1,0 +1,13 @@
+.provider-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 50px;
+    text-align: center;
+  }
+  
+  .provider-details-content {
+    margin-top: 20px;
+  }
+  
