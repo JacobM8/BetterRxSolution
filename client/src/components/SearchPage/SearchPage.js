@@ -14,17 +14,39 @@ const SearchPage = () => {
     const [searchClicked, setSearchClicked] = useState(false);
 
     const search = () => {
+        let params = {
+            firstName: firstName,
+            lastName: lastName,
+            npiNumber: npiNumber,
+            taxonomyDescription: taxonomyDescription,
+            city: city,
+            state: state,
+            zip: zip
+        };
+
+        // Filter out parameters that are empty
+        params = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null && v !== ''));
+
         axios
-            .get(`http://localhost:5000/api/npi?firstName=${firstName}&lastName=${lastName}&npiNumber=${npiNumber}&taxonomyDescription=${taxonomyDescription}&city=${city}&state=${state}&zip=${zip}`)
+            .get("https://localhost:7085/NpiRegistry", { params })
             .then(res => {
-                setSearchResults(res.data);
+                setSearchResults(res.data.results); // updated this line
                 setSearchClicked(true);
             })
             .catch(err => {
                 console.error(err);
                 setSearchClicked(true);
             });
+
     };
+
+    console.log("searchResults: ", searchResults);
+    if (searchResults !== null) {
+        console.log("searchResults count: ", searchResults.length);
+    } else {
+        console.log("searchResults is null");
+    }
+
 
     return (
         <div className="search-container">
@@ -51,7 +73,7 @@ const SearchPage = () => {
                     <div>
                         {searchResults.map(result => (
                             <div key={result.number}>
-                                {result.basic.first_name} {result.basic.last_name}
+                                {result.basic.firstName} {result.basic.lastName} {result.number}
                             </div>
                         ))}
                     </div>
