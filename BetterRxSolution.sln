@@ -5,6 +5,8 @@ VisualStudioVersion = 25.0.1705.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterRxSolution", "BetterRxSolution\BetterRxSolution.csproj", "{C2D19724-C601-44AD-A97F-A81A085BF6F1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterRxSolutionTests", "BetterRxSolutionTests\BetterRxSolutionTests.csproj", "{751A6DD3-4826-4E57-9C13-B2E83D26E3CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C2D19724-C601-44AD-A97F-A81A085BF6F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2D19724-C601-44AD-A97F-A81A085BF6F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2D19724-C601-44AD-A97F-A81A085BF6F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{751A6DD3-4826-4E57-9C13-B2E83D26E3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{751A6DD3-4826-4E57-9C13-B2E83D26E3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{751A6DD3-4826-4E57-9C13-B2E83D26E3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{751A6DD3-4826-4E57-9C13-B2E83D26E3CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

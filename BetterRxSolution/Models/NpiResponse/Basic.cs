@@ -21,4 +21,3 @@ namespace BetterRxSolution.Models.NpiResponse
         public string SoleProprietor { get; set; }
     }
 }
-
