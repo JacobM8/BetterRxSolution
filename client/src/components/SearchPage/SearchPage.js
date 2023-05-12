@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './SearchPage.css';
 
 const SearchPage = () => {
@@ -10,8 +11,16 @@ const SearchPage = () => {
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
     const [zip, setZip] = useState("");
-    const [searchResults, setSearchResults] = useState(null);
     const [searchClicked, setSearchClicked] = useState(false);
+
+    const [searchResults, setSearchResults] = useState(() => {
+        const savedResults = sessionStorage.getItem('searchResults');
+        return savedResults ? JSON.parse(savedResults) : null;
+    });
+
+    useEffect(() => {
+        sessionStorage.setItem('searchResults', JSON.stringify(searchResults));
+    }, [searchResults]);
 
     const search = () => {
         let params = {
@@ -24,20 +33,18 @@ const SearchPage = () => {
             zip: zip
         };
 
-        // Filter out parameters that are empty
         params = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null && v !== ''));
 
         axios
             .get("https://localhost:7085/NpiRegistry", { params })
             .then(res => {
-                setSearchResults(res.data.results); // updated this line
+                setSearchResults(res.data.results);
                 setSearchClicked(true);
             })
             .catch(err => {
                 console.error(err);
                 setSearchClicked(true);
             });
-
     };
 
     console.log("searchResults: ", searchResults);
@@ -46,7 +53,6 @@ const SearchPage = () => {
     } else {
         console.log("searchResults is null");
     }
-
 
     return (
         <div className="search-container">
@@ -73,7 +79,12 @@ const SearchPage = () => {
                     <div>
                         {searchResults.map(result => (
                             <div key={result.number}>
-                                {result.basic.firstName} {result.basic.lastName} {result.number}
+                                <Link to={{
+                                    pathname: `/provider/${result.number}`,
+                                    state: { providerDetails: result }
+                                }}>
+                                    {result.basic.firstName} {result.basic.lastName}
+                                </Link>
                             </div>
                         ))}
                     </div>
