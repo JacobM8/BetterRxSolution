@@ -27,4 +27,3 @@ namespace BetterRxSolution.Models.NpiResponse
         public Basic Basic { get; set; }
     }
 }
-

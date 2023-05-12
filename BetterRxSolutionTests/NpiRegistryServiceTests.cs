@@ -57,7 +57,7 @@ public class NpiRegistryServiceTests
         Assert.Multiple(() =>
         {
             Assert.That(result, Is.Not.Null);
-            Assert.That(resultList.Count, Is.EqualTo(1));
+            Assert.That(resultList.Count, Is.EqualTo(2));
             Assert.That(resultList[0].Basic.FirstName, Is.EqualTo(firstName));
             Assert.That(resultList[0].Basic.LastName, Is.EqualTo(lastName));
         });

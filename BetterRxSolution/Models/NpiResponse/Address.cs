@@ -36,4 +36,3 @@ namespace BetterRxSolution.Models.NpiResponse
         public string TelephoneNumber { get; set; }
     }
 }
-
